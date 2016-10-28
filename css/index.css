@@ -1,0 +1,384 @@
+@charset "UTF-8";
+body, input, img, a, ul, h1, h2, h3, h4, h5, h6, p, li, i, em, b, p {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 16px;
+  text-decoration: none;
+  list-style: none;
+  font-family: SFNSDisplay, SFNSText, 'Helvetica Neue', sans-serif; }
+
+body {
+  overflow: hidden; }
+
+img {
+  border: 0; }
+
+a {
+  color: #333; }
+
+input {
+  outline: none; }
+
+.list-box {
+  width: 365px;
+  height: 100vh;
+  overflow-y: auto;
+  position: absolute;
+  background: #383836;
+  left: 0;
+  top: 0; }
+  .list-box .title {
+    width: 100%;
+    height: 44px;
+    border-bottom: 1px solid #1a1a1a;
+    position: relative; }
+    .list-box .title .icloud {
+      position: absolute;
+      width: 56px;
+      height: 16px;
+      top: 14px;
+      left: 13px;
+      background-size: 168px 726px;
+      background-image: url(../img/imgs.png);
+      background-position: 0 -588px;
+      background-repeat: no-repeat; }
+    .list-box .title .word {
+      position: absolute;
+      width: 167px;
+      height: 31px;
+      top: 6px;
+      left: 74px;
+      color: #999999;
+      line-height: 31px;
+      font-size: 21px; }
+    .list-box .title .down {
+      position: absolute;
+      width: 11px;
+      height: 7px;
+      top: 17px;
+      left: 163px;
+      background-size: 168px 726px;
+      background-image: url(../img/imgs.png);
+      background-position: -51px -391px;
+      background-repeat: no-repeat; }
+    .list-box .title .add {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      right: 12px;
+      width: 23px;
+      height: 23px;
+      background-size: 168px 726px;
+      background-image: url(../img/imgs.png);
+      background-position: -46px -526px;
+      background-repeat: no-repeat; }
+  .list-box .planed {
+    width: 100%;
+    height: 45px;
+    box-sizing: border-box;
+    padding-left: 4px;
+    position: relative; }
+    .list-box .planed .clock {
+      width: 42px;
+      height: 42px;
+      background-size: 168px 726px;
+      background-image: url(../img/imgs.png);
+      background-position: 0 -359px;
+      background-repeat: no-repeat; }
+    .list-box .planed .word {
+      position: absolute;
+      width: 167px;
+      height: 31px;
+      top: 5px;
+      left: 42px;
+      color: #fff;
+      line-height: 31px;
+      font-size: 17px;
+      font-family: '微软雅黑';
+      font-weight: 300; }
+  .list-box .list {
+    width: 100%;
+    height: 45px;
+    box-sizing: border-box;
+    padding-left: 4px;
+    position: relative; }
+    .list-box .list.active {
+      background: #1a1a1a; }
+    .list-box .list .dot {
+      position: absolute;
+      z-index: 9;
+      top: 14px;
+      left: 12px;
+      width: 17px;
+      height: 17px;
+      background-size: 168px 726px;
+      background-image: url(../img/imgs.png);
+      background-position: -102px -571px;
+      background-repeat: no-repeat; }
+    .list-box .list .mission {
+      width: 325px;
+      height: 45px;
+      margin-left: 36px;
+      border-bottom: 1px solid #2a2a28;
+      box-sizing: border-box; }
+      .list-box .list .mission .value {
+        line-height: 45px;
+        font-size: 17px;
+        color: #fff; }
+    .list-box .list input {
+      width: 70%;
+      height: 45px;
+      background: transparent;
+      display: none; }
+      .list-box .list input.bianji {
+        display: block; }
+    .list-box .list .share {
+      position: absolute;
+      right: 10px;
+      width: 23px;
+      height: 23px;
+      top: 9px;
+      background-size: 168px 726px;
+      background-image: url(../img/imgs.png);
+      background-position: -119px -497px;
+      background-repeat: no-repeat; }
+      .list-box .list .share:hover {
+        background-position: 0px -526px;
+        cursor: pointer; }
+
+.right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 365px;
+  min-width: 500px;
+  background-image: url(../img/bg.png); }
+  .right .search-box {
+    width: 100%;
+    height: 44px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.35); }
+    .right .search-box .search {
+      width: 480px;
+      height: 44px; }
+      .right .search-box .search.active {
+        background: #fff; }
+      .right .search-box .search .search-img {
+        float: left;
+        width: 24px;
+        height: 24px;
+        margin-top: 10px;
+        margin-left: 10px;
+        background-size: 168px 726px;
+        background-image: url(../img/imgs.png);
+        background-repeat: no-repeat;
+        background-position: -138px -358px; }
+      .right .search-box .search input {
+        outline: none;
+        border: none;
+        width: 432px;
+        height: 43px;
+        font-size: 19px;
+        color: #333;
+        background: transparent;
+        margin-left: 3px; }
+  .right .right-lists {
+    width: 100%;
+    margin-top: 19px; }
+    .right .right-lists .right-title {
+      width: 97%;
+      height: 62px;
+      line-height: 62px;
+      margin-left: 20px;
+      font-size: 40px;
+      color: #CB70E0;
+      border-bottom: 1px solid #E0E0E0;
+      position: relative; }
+      .right .right-lists .right-title .xuanxiang {
+        font-size: 19px;
+        float: right;
+        margin-right: 40px;
+        line-height: 80px;
+        cursor: pointer; }
+        .right .right-lists .right-title .xuanxiang:hover {
+          color: #AA8E66; }
+      .right .right-lists .right-title .xuan-box {
+        width: 353px;
+        height: 223px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        position: absolute;
+        top: -40px;
+        right: 90px;
+        background: #fff;
+        display: none;
+        z-index: 9999; }
+        .right .right-lists .right-title .xuan-box .xuan-content {
+          width: 316px;
+          margin: 10px auto 0; }
+          .right .right-lists .right-title .xuan-box .xuan-content input {
+            width: 314px;
+            height: 42px;
+            line-height: 42px;
+            padding: 0 10px;
+            box-sizing: border-box;
+            font-size: 22px; }
+          .right .right-lists .right-title .xuan-box .xuan-content p {
+            color: #000;
+            font-size: 16px; }
+          .right .right-lists .right-title .xuan-box .xuan-content .color-lists {
+            width: 100%;
+            height: 33px;
+            margin-top: -20px; }
+            .right .right-lists .right-title .xuan-box .xuan-content .color-lists .color-list {
+              width: 33px;
+              height: 33px;
+              float: left;
+              margin: 0 6px;
+              position: relative;
+              cursor: pointer;
+              background-image: url(../img/dots.png);
+              background-size: 33px 406px;
+              background-repeat: no-repeat; }
+              .right .right-lists .right-title .xuan-box .xuan-content .color-lists .color-list .color {
+                width: 25px;
+                height: 25px;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+                background-size: 33px 406px;
+                background-image: url(../img/dots.png);
+                background-repeat: no-repeat; }
+            .right .right-lists .right-title .xuan-box .xuan-content .color-lists .color-list-1 .color {
+              background-position: 0 -231px; }
+            .right .right-lists .right-title .xuan-box .xuan-content .color-lists .color-list-2 .color {
+              background-position: 0 -256px; }
+            .right .right-lists .right-title .xuan-box .xuan-content .color-lists .color-list-3 .color {
+              background-position: 0 -281px; }
+            .right .right-lists .right-title .xuan-box .xuan-content .color-lists .color-list-4 .color {
+              background-position: 0 -306px; }
+            .right .right-lists .right-title .xuan-box .xuan-content .color-lists .color-list-5 .color {
+              background-position: 0 -331px; }
+            .right .right-lists .right-title .xuan-box .xuan-content .color-lists .color-list-6 .color {
+              background-position: 0 -356px; }
+            .right .right-lists .right-title .xuan-box .xuan-content .color-lists .color-list-7 .color {
+              background-position: 0 -381px; }
+            .right .right-lists .right-title .xuan-box .xuan-content .color-lists .color-list {
+              background: #fff; }
+            .right .right-lists .right-title .xuan-box .xuan-content .color-lists .color-list-1.a {
+              background-position: 0 0;
+              background-size: 33px 406px;
+              background-image: url(../img/dots.png);
+              background-repeat: no-repeat; }
+            .right .right-lists .right-title .xuan-box .xuan-content .color-lists .color-list-2.a {
+              background-position: 0 -33px;
+              background-size: 33px 406px;
+              background-image: url(../img/dots.png);
+              background-repeat: no-repeat; }
+            .right .right-lists .right-title .xuan-box .xuan-content .color-lists .color-list-3.a {
+              background-position: 0 -66px;
+              background-size: 33px 406px;
+              background-image: url(../img/dots.png);
+              background-repeat: no-repeat; }
+            .right .right-lists .right-title .xuan-box .xuan-content .color-lists .color-list-4.a {
+              background-position: 0 -99px;
+              background-size: 33px 406px;
+              background-image: url(../img/dots.png);
+              background-repeat: no-repeat; }
+            .right .right-lists .right-title .xuan-box .xuan-content .color-lists .color-list-5.a {
+              background-position: 0 -132px;
+              background-size: 33px 406px;
+              background-image: url(../img/dots.png);
+              background-repeat: no-repeat; }
+            .right .right-lists .right-title .xuan-box .xuan-content .color-lists .color-list-6.a {
+              background-position: 0 -165px;
+              background-size: 33px 406px;
+              background-image: url(../img/dots.png);
+              background-repeat: no-repeat; }
+            .right .right-lists .right-title .xuan-box .xuan-content .color-lists .color-list-7.a {
+              background-position: 0 -198px;
+              background-size: 33px 406px;
+              background-image: url(../img/dots.png);
+              background-repeat: no-repeat; }
+          .right .right-lists .right-title .xuan-box .xuan-content span {
+            font-size: 17px;
+            cursor: pointer;
+            line-height: 38px; }
+            .right .right-lists .right-title .xuan-box .xuan-content span.del {
+              color: red;
+              float: left; }
+            .right .right-lists .right-title .xuan-box .xuan-content span.com {
+              color: #000;
+              float: right; }
+  .right .complete {
+    width: 100%; }
+    .right .complete .com-item {
+      width: 100%;
+      border-bottom: 1px solid #ccc; }
+    .right .complete .evt {
+      width: 100%;
+      height: 52px;
+      border-bottom: 1px solid #ccc;
+      position: relative; }
+      .right .complete .evt .circle {
+        width: 32px;
+        height: 32px;
+        position: absolute;
+        left: 30px;
+        top: 10px; }
+      .right .complete .evt input {
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        left: 70px;
+        position: absolute;
+        top: 0; }
+    .right .complete li {
+      width: 100%;
+      height: 51px;
+      line-height: 51px;
+      font-size: 19px;
+      color: #999;
+      position: relative; }
+      .right .complete li .item-box {
+        width: 90%;
+        height: 100%;
+        position: relative;
+        padding-left: 25px; }
+        .right .complete li .item-box .cue {
+          width: 33px;
+          height: 33px;
+          float: left;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: -40px;
+          margin: auto;
+          cursor: pointer;
+          background-image: url(../img/dots.png);
+          background-repeat: no-repeat;
+          background-position: 0 0; }
+          .right .complete li .item-box .cue div {
+            width: 25px;
+            height: 25px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            background-image: url(../img/dots.png);
+            background-repeat: no-repeat;
+            background-position: 0 -231px; }
+      .right .complete li.comp {
+        width: 100%;
+        height: 100%; }
+      .right .complete li.active {
+        border-top: 1px solid rgba(201, 111, 205, 0.9);
+        border-bottom: 1px solid rgba(201, 111, 205, 0.9);
+        background: rgba(201, 111, 205, 0.4); }

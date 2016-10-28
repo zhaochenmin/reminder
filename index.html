@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="reminder">
+<head>
+	<meta charset="UTF-8">
+	<meta >
+	<title>Document</title>
+	<link href="" rel="shortcut icon" type="image/x-icon">
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/angular.js"></script>
+	<script src="js/index.js"></script>
+</head>
+<body ng-controller="mainController">
+	<div class="list-box">
+        <div class="title">
+            <div class="icloud"></div>
+            <div class="word">提醒事项</div>
+            <div class="down"></div>
+            <div class="add" ng-click="add()"></div>
+        </div>
+        <div class="planed">
+            <div class="clock"></div>
+            <div class="word">已计划</div>
+        </div>
+        <ul class="lists">
+            <creat-li  ng-repeat="list in lists"></creat-li>
+        </ul>
+    </div>
+	<div class="right">
+        <div class="search-box">
+            <div class="search">
+                <span class="search-img">
+					<div></div>
+                </span>
+                <input type="text" placeholder="搜索所有提醒">
+            </div>
+        </div>
+        <div class="right-lists">
+            <div class="right-title">
+                <span style="color:{{current.color}}">{{current.name}}</span>
+                <span class="xuanxiang" ng-click="toggle()">选项</span>
+                <div class="xuan-box">
+                    <div class="xuan-content">
+                        <input type="text" value="{{current.name}}" style="color:{{current.color}}">
+                        <p>列表颜色</p>
+                        <ul class="color-lists">
+                            <li class="color-list color-list-1 a">
+                                <div class="color"></div>
+                            </li>
+                            <li class="color-list color-list-2">
+                                <div class="color"></div>
+                            </li>
+                            <li class="color-list color-list-3">
+                                <div class="color"></div>
+                            </li>
+                            <li class="color-list color-list-4">
+                                <div class="color"></div>
+                            </li>
+                            <li class="color-list color-list-5">
+                                <div class="color"></div>
+                            </li>
+                            <li class="color-list color-list-6">
+                                <div class="color"></div>
+                            </li>
+                            <li class="color-list color-list-7">
+                                <div class="color"></div>
+                            </li>
+                        </ul>
+                        <span class="del">删除</span>
+                        <span class="com">完成</span>
+                    </div>
+                </div>
+            </div>
+            <ul class="complete">
+                <li class="com-item comp" ng-repeat="todo in lists.todos|filter:{state:1}">
+                    <div class="item-box">
+                        <div class="cue">
+                            <div></div>
+                        </div>
+                        <span>{{todo.name}}</span>
+                    </div>
+                </li>
+                <li class="com-item">
+                    <div class="item-box" ng-click="createvent()">
+                        新项目...
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</body>
+<script>
+	var reminder=angular.module("reminder",[]);
+    reminder.controller("mainController",["$scope",function($scope){
+        $scope.lists=[
+            {position:"-34px -571px",id:1001,color:'#CC74E1',name:"事项1",todos:[{id:1,name:"买车",state:0},{id:2,name:"买房",state:0},{id:3,name:"买花",state:0}]},
+            {position:"0px -571px",id:1002,color:'#61D937',name:"事项2"},
+            {position:"-51px -571px",id:1003,color:'#1AAAF8',name:"事项3"},
+            {position:"-85px -571px",id:1004,color:'#F7CB00',name:"事项4"},
+            {position:"-132px -550px",id:1005,color:'#9F815B',name:"事项5"},
+            {position:"-68px -571px",id:1006,color:'#FF2A6A',name:"事项6"},
+            {position:"-102px -571px",id:1007,color:'#FF7E00',name:"事项7"}
+        ];
+        $scope.current=$scope.lists[0];
+        $scope.change=function(v){
+            $scope.current=v;
+        };
+        $scope.add=function(){
+            $(".add-item").on("mousedown",false);
+            var max_id=-Infinity;
+            var position;
+            $scope.lists.forEach(function(v,i){
+                position=$scope.lists[($scope.lists.length%7)].position;
+            });
+            $scope.lists.forEach(function(v,i){
+                if(max_id<v.id){
+                    max_id=v.id;
+                }
+            });
+            var item={
+                position:position,
+                id:max_id+1,
+                name:"事项"+($scope.lists.length+1)
+            };
+            $scope.lists.push(item);
+        };
+        $scope.toggle=function(e){
+        	$('.xuan-box').toggle();
+        }
+        $scope.createvent=function(){
+        	$('.com-item').before('<li class="evt" style="background:{{current.color}}"><span class="circle"></span><input type="text" style="background:{{lists.color}};opacity:0.6"></li>')
+        }
+        $(document).on('keyup',function(e){
+        	if(e.keyCode==13){
+
+        		if($('.com-item').prev().find('input').val()){
+        			$('<div>').text($('.com-item').prev().find('input').val()).append($('.com-item').prev());
+        			console.log($('.com-item').prev().find('input').val())
+        			// $('.com-item').prev().find('input').css({display:none})
+        		}
+        	}
+        })
+    }]);
+    reminder.directive("creatLi",[function(){
+        return{
+            restrict:"AE",
+            replace:true,
+            template:'<li class="list" ng-click="change(list)" data-id="{{list.id}}" > <div class="dot" style="background-position:{{list.position}}"></div> <div class="mission"> <span class="value">{{list.name}}</span> <input type="text"  ng-model="current.name"> </div> <span class="share"></span></li>',
+            link:function(scope,el){
+                $("el").on("mousedown",false);
+                $(el).on("dblclick",function(){
+                    var input=$(el).find("input");
+                    input.addClass("bianji");
+                    $(el).find("span").addClass("text");
+                    input.val(input.val()).focus();
+                });
+                $(el).on("click",function(){
+                    var color=["-102px -571px","-86px -571px","-68px -571px","-52px -571px","-34px -571px","0px -571px","-133px -550px"];
+                    var index=$(el).index();
+                    $(".lists").find(".list").removeClass("active");
+                    $(el).addClass("active");
+                    $(".right-title").css("background-position",color[index%7]);
+                    $(el).parent().find('.mission').css({border:''});
+                    $(el).find('.mission').css({border:0});
+                    $(el).prev().find('.mission').css({border:0})
+                });
+                $(el).find("input").on("blur",function(){
+                    var input=$(el).find("input");
+                    var value=input.val();
+                    input.removeClass("bianji");
+                    $(el).find(".title").text(value);
+                    $(el).find(".title").removeClass("text");
+                });
+                $(document).on("keyup",function(e){
+                    if(e.keyCode===46){
+                        var id=parseInt($(".active").attr("data-id"));
+                    	console.log(parseInt($(".active").attr("data-id")))
+                        scope.$apply(function(){
+                            scope.lists=scope.lists.filter(function(v,i){
+                                return v.id === id;
+                            })
+                        })
+                    }
+                })
+            }
+        }
+    }])
+    
+</script>
+</html>
